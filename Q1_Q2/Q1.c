@@ -1,77 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <time.h>   
-
-#define N_DISCOS 4
-#define N_PINOS 3
-#define N_CONFIGS 81
-
-
-
-void gerar_configuracoes(int configuracoes[][N_DISCOS], int total_config) {
-    for (int i = 0; i < total_config; i++) {
-        int temp = i;
-        for (int j = 0; j < N_DISCOS; j++) {
-            configuracoes[i][j] = temp % N_PINOS + 1; // Cada disco pode estar em 1, 2 ou 3
-            temp /= N_PINOS;
-        }
-    }
-}
-
-int movimento_valido(int config1[], int config2[]) {
-    int movimentos = 0;
-    int disco_movido = -1;
-    int valido = 1; // Flag para indicar se o movimento é válido
-
-    // Verifica a quantidade de discos movidos
-    for (int i = 0; i < N_DISCOS; i++) {
-        if (config1[i] != config2[i]) {
-            movimentos++;
-            if (movimentos > 1) {
-                valido = 0; // Mais de um disco movido
-            }
-            disco_movido = i;
-        }
-    }
-
-    // Verifica se nenhum disco foi movido ou mais de um foi movido
-    if (movimentos == 0 || movimentos > 1) {
-        valido = 0; // Nenhum ou mais de um disco movido
-    }
-
-    // Validar regras: só o menor disco do pino pode ser movido
-    if (valido) {
-        int pino_origem = config1[disco_movido];
-        int pino_destino = config2[disco_movido];
-
-        // Verifica se há discos menores bloqueando no pino de origem ou no pino de destino
-        for (int i = 0; i < N_DISCOS; i++) {
-            if (i != disco_movido) {
-                if (config1[i] == pino_origem && i < disco_movido) {
-                    valido = 0; // Há discos menores bloqueando no pino de origem
-                }
-                if (config2[i] == pino_destino && i < disco_movido) {
-                    valido = 0; // Há discos menores no pino de destino
-                }
-            }
-        }
-    }
-
-    return valido; // Retorna o resultado final, se o movimento é válido (1) ou não (0)
-}
-
-void FillMatrizAdj(int configuracoes[N_CONFIGS][N_DISCOS], int matriz[N_CONFIGS][N_CONFIGS]) {
-    for (int li = 0; li < N_CONFIGS; li++) {
-        for (int col = 0; col < N_CONFIGS; col++) {
-            if (movimento_valido(configuracoes[li], configuracoes[col])) {
-                matriz[li][col] = 1; // Custo do movimento é 1
-            } else {
-                matriz[li][col] = 0; // Sem conexão
-            }
-        }
-    }
-}
+#include "base.h"
 
 void Dijkstra(int matriz[][N_CONFIGS], int startVerticies, int endVerticies)
 {
@@ -113,20 +40,6 @@ void Dijkstra(int matriz[][N_CONFIGS], int startVerticies, int endVerticies)
     printf("Menor caminho de %d para %d: %d\n", startVerticies, endVerticies, distancias[endVerticies]);
 }
 
-int encontrar_configuracao(int configuracoes[][N_DISCOS], int pino_inicial) {
-    for (int i = 0; i < N_CONFIGS; i++) {
-        int valido = 1;
-        for (int j = 0; j < N_DISCOS; j++) {
-            if (configuracoes[i][j] != pino_inicial) {
-                valido = 0;
-                break;
-            }
-        }
-        if (valido) return i;
-    }
-    return -1; // Não encontrado
-}
-
 void metrificarTempo(int matriz[][N_CONFIGS])
 {
     int startVerticies = 0;
@@ -137,7 +50,7 @@ void metrificarTempo(int matriz[][N_CONFIGS])
 
     startVerticies_time = clock();
 
-    // Executando Djijkstra 10 vezes para obter a média
+    // Executando Djijkstra 100 vezes para obter a média
     for (int i = 0; i < 100; i++) {
         Dijkstra(matriz, startVerticies, endVerticies);
     }
@@ -157,7 +70,7 @@ int main() {
     // Exibir Matriz de Adjacência
     gerar_configuracoes(configuracoes, total_config);
 
-    FillMatrizAdj(configuracoes, matriz_adj);
+    matrizAdjacente(configuracoes, matriz_adj);
         
     metrificarTempo(matriz_adj);
 
