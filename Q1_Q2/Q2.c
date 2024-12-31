@@ -9,6 +9,7 @@ int main() {
     matrizAdjacente(configuracoes, matriz);
 
     printf("Matriz de adjacência:\n");
-    
+    printf("BORA BIL\n");
+
     return 0;
 }
