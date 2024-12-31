@@ -8,5 +8,7 @@ int main() {
 
     matrizAdjacente(configuracoes, matriz);
 
+    printf("Matriz de adjacência:\n");
+    
     return 0;
 }
