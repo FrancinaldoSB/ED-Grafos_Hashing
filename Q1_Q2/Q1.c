@@ -51,14 +51,14 @@ void metrificarTempo(int matriz[][N_CONFIGS])
     startVerticies_time = clock();
 
     // Executando Djijkstra 100 vezes para obter a média
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
         Dijkstra(matriz, startVerticies, endVerticies);
     }
     end_time = clock();
 
     time = (double)(end_time - startVerticies_time) / CLOCKS_PER_SEC;
 
-    printf("Tempo gasto - Dijkstra Executando 100 vezes: %lf ms\n", time * 1000);
+    printf("%lf\n", time);
     printf("\n");
 }
 
@@ -72,7 +72,8 @@ int main() {
 
     matrizAdjacente(configuracoes, matriz_adj);
         
-    metrificarTempo(matriz_adj);
-
+    for (int i = 0; i < 30; i++) {
+        metrificarTempo(matriz_adj);
+    }
     return 0;
 }
