@@ -1,6 +1,6 @@
-#include "Q4.h"
+#include "./src/Q4.h"
 
-int main() {
+int main(){
     const int TAM_HASH = 150;
     const int TAM_HASH2 = 101;
 

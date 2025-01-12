@@ -42,15 +42,25 @@ typedef struct {
 /* Protótipos de funções */
 
 void iniVertices(Grafo *grafo);
+
 void iniArestas(Grafo *grafo);
+
 void iniGrafo(Grafo *grafo);
+
 void exibirArestas(const Grafo *grafo);
+
 void exibirGrafo(const Grafo *grafo);
+
 void preencherArestas(Grafo *grafo);
+
 void iniDjikstra(double *distancias, int *visitados, int *predecessor);
+
 int maiorConfiabilidade(const double *distancias, const int *visitados);
+
 void attConfiabilidade(Aresta arestas[QUANTIDADE_DE_VERTICES][QUANTIDADE_DE_VERTICES], double *distancias, int *predecessor, int verticeAtual);
+
 void Djikstra(int inicio, Aresta arestas[QUANTIDADE_DE_VERTICES][QUANTIDADE_DE_VERTICES], double *distancias, int *predecessor);
+
 void exibirDjikstra(int inicio, int fim, const int *predecessor);
 
 /*----------------------------------------------------------------------------------------------------------*/

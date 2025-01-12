@@ -58,7 +58,7 @@ int main(){
 
     matrizAdjacente(configuracoes, matriz);
 
-    printf("Tempo de execução do algoritmo de Bellman-Ford:\n");
+    printf("Tempo de execucao do algoritmo de Bellman-Ford:\n");
     for(i = 0; i < 30; i++)
         metrificarTempo(matriz);
 
