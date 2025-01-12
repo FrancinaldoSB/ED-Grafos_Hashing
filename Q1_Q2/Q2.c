@@ -24,6 +24,7 @@ void BellmanFord(int matriz[][N_CONFIGS], int startVerticies, int endVerticies){
             }
         }
     }
+    printf("Caminho mais curto entre %d e %d: %d\n", startVerticies, endVerticies, distancias[endVerticies]);
 }
 
 /**

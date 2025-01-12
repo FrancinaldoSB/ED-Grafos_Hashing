@@ -17,7 +17,6 @@ int main() {
 
     printf("\nTeste com Hash 2 (Tamanho 101):\n");
     testarHash(hash2, tratarColisaoHash2, TAM_HASH2);
-
-
+    
     return 0;
 }

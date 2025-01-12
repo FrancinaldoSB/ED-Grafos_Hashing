@@ -33,6 +33,7 @@ void Dijkstra(int matriz[][N_CONFIGS], int startVerticies, int endVerticies){
                 distancias[v] = distancias[u] + matriz[u][v];
         }
     }
+    printf("Caminho mais curto entre %d e %d: %d\n", startVerticies, endVerticies, distancias[endVerticies]);
 }
 
 /**
