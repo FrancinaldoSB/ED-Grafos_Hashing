@@ -14,7 +14,7 @@ void iniVertices(Grafo *grafo){
 /**
  * @brief Função para inicializar as arestas do grafo com confiabilidade 0
  * 
- * @param grafo Grafo
+ * @param grafo Grafo com seus vértices e arestas
  * @return void
  */
 void iniArestas(Grafo *grafo){
@@ -27,7 +27,7 @@ void iniArestas(Grafo *grafo){
 /**
  * @brief Função para inicializar o grafo completo
  * 
- * @param grafo Grafo
+ * @param grafo Grafo com seus vértices e arestas
  * @return void
  */
 void iniGrafo(Grafo *grafo){
@@ -38,12 +38,12 @@ void iniGrafo(Grafo *grafo){
 /**
  * @brief Função para exibir as arestas do grafo com suas respectivas confiabilidades
  * 
- * @param grafo Grafo
+ * @param grafo Grafo com seus vértices e arestas
  * @return void
  */
 void exibirArestas(const Grafo *grafo){
     for(int i = 0; i < QUANTIDADE_DE_VERTICES; i++){
-        printf("Vértice %d:\n", grafo->vertices[i].id);
+        printf("Vertice %d:\n", grafo->vertices[i].id);
         for(int j = 0; j < QUANTIDADE_DE_VERTICES; j++)
             printf("  Conexão [%d -> %d]: Confiabilidade = %f\n", i, j, grafo->arestas[i][j].confiabilidade);
     }
@@ -52,18 +52,18 @@ void exibirArestas(const Grafo *grafo){
 /**
  * @brief Função para exibir o grafo completo
  * 
- * @param grafo Grafo
+ * @param grafo Grafo com seus vértices e arestas
  * @return void
  */
 void exibirGrafo(const Grafo *grafo){
-    printf("Exibindo as conexões do grafo:\n");
+    printf("Exibindo as conexoes do grafo:\n");
     exibirArestas(grafo);
 }
 
 /**
  * @brief Função para preencher as arestas do grafo com confiabilidades aleatórias
  * 
- * @param grafo Grafo
+ * @param grafo Grafo com seus vértices e arestas
  * @return void
  */
 void preencherArestas(Grafo *grafo){
@@ -75,10 +75,6 @@ void preencherArestas(Grafo *grafo){
         }
     }
 }
-
-// void popularGrafoComValoresAleatorios(Grafo *grafo) {
-//     preencherArestasComConfiabilidadeAleatoria(grafo);
-// }
 
 /**
  * @brief Função para inicializar os parâmetros do algoritmo de Dijkstra
@@ -168,13 +164,13 @@ void Djikstra(int inicio, Aresta arestas[QUANTIDADE_DE_VERTICES][QUANTIDADE_DE_V
  */
 void exibirDjikstra(int inicio, int fim, const int *predecessor){
     if (predecessor[fim] == -1)
-        printf("Nenhum caminho foi encontrado entre os vértices %d e %d.\n", inicio, fim);
+        printf("Nenhum caminho foi encontrado entre os vertices %d e %d.\n", inicio, fim);
     else{
         int caminho[QUANTIDADE_DE_VERTICES];
         int contador = 0;
         for(int v = fim; v != -1; v = predecessor[v])
             caminho[contador++] = v;
-        printf("Caminho encontrado entre os vértices %d e %d: ", inicio, fim);
+        printf("Caminho encontrado entre os vertices %d e %d: ", inicio, fim);
         for(int i = contador - 1; i >= 0; i--)
             printf("%d ", caminho[i]);
         printf("\n");

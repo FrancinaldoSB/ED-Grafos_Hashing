@@ -3,6 +3,7 @@
         "*.ndjson": "jsonl",
         "*.dbclient-js": "javascript",
         "q4.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }
