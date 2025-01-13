@@ -7,11 +7,9 @@
  */
 void menu(){
     printf("\nMenu de Operações:\n");
-    printf("1. Inicializar Grafo\n");
-    printf("2. Popular Grafo\n");
-    printf("3. Exibir Grafo\n");
-    printf("4. Encontrar Caminho com Dijkstra\n");
-    printf("5. Sair\n");
+    printf("1. Exibir Grafo\n");
+    printf("2. Encontrar Caminho com Dijkstra\n");
+    printf("3. Sair\n");
     printf("Escolha uma opção: ");
 }
 
@@ -21,7 +19,11 @@ int main(){
     Grafo grafo;
     double distancias[QUANTIDADE_DE_VERTICES];
     int predecessor[QUANTIDADE_DE_VERTICES];
-    int opcao;
+    int opcao, inicio, fim;
+
+    iniGrafo(&grafo);
+
+    preencherArestas(&grafo);
 
     do{
         menu();
@@ -29,27 +31,23 @@ int main(){
 
         switch (opcao) {
             case 1:
-                iniGrafo(&grafo);
-                printf("O grafo foi inicializado com sucesso.\n");
-                break;
-            case 2:
-                preencherArestas(&grafo);
-                printf("O grafo foi populado com confiabilidades aleatórias.\n");
-                break;
-            case 3:
                 exibirGrafo(&grafo);
                 break;
-            case 4:
-                Djikstra(0, grafo.arestas, distancias, predecessor);
-                exibirDjikstra(0, 2, predecessor);
+            case 2:
+                printf("Digite o vertice de início: ");
+                scanf("%d", &inicio);
+                printf("Digite o vertice de fim: ");
+                scanf("%d", &fim);
+                Djikstra(inicio, grafo.arestas, distancias, predecessor);
+                exibirDjikstra(inicio, fim, predecessor);
                 break;
-            case 5:
+            case 3:
                 printf("Encerrando o programa.\n");
                 break;
             default:
                 printf("Opção inválida. Tente novamente.\n");
         }
-    }while(opcao != 5);
+    }while(opcao != 3);
 
     return 0;
 }

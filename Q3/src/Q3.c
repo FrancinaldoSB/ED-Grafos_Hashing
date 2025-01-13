@@ -43,9 +43,9 @@ void iniGrafo(Grafo *grafo){
  */
 void exibirArestas(const Grafo *grafo){
     for(int i = 0; i < QUANTIDADE_DE_VERTICES; i++){
-        printf("Vertice %d:\n", grafo->vertices[i].id);
+        printf("Vertice[%d]\n", grafo->vertices[i].id);
         for(int j = 0; j < QUANTIDADE_DE_VERTICES; j++)
-            printf("  Conexão [%d -> %d]: Confiabilidade = %f\n", i, j, grafo->arestas[i][j].confiabilidade);
+            printf("[%d -> %d] -> Confiabilidade = %f\n", i, j, grafo->arestas[i][j].confiabilidade);
     }
 }
 

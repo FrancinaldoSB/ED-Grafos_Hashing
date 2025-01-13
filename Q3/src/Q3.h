@@ -17,7 +17,7 @@
 
 /* Definição de constantes */
 
-#define QUANTIDADE_DE_VERTICES 3
+#define QUANTIDADE_DE_VERTICES 6
 #define INFINITO_NEGATIVO INT_MIN
 
 /*----------------------------------------------------------------------------------------------------------*/
